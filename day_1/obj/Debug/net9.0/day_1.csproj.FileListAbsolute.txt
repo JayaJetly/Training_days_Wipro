@@ -1,0 +1,14 @@
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\bin\Debug\net9.0\day_1.exe
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\bin\Debug\net9.0\day_1.deps.json
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\bin\Debug\net9.0\day_1.runtimeconfig.json
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\bin\Debug\net9.0\day_1.dll
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\bin\Debug\net9.0\day_1.pdb
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\obj\Debug\net9.0\day_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\obj\Debug\net9.0\day_1.AssemblyInfoInputs.cache
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\obj\Debug\net9.0\day_1.AssemblyInfo.cs
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\obj\Debug\net9.0\day_1.csproj.CoreCompileInputs.cache
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\obj\Debug\net9.0\day_1.dll
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\obj\Debug\net9.0\refint\day_1.dll
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\obj\Debug\net9.0\day_1.pdb
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\obj\Debug\net9.0\day_1.genruntimeconfig.cache
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\day_1\obj\Debug\net9.0\ref\day_1.dll

@@ -1,0 +1,54 @@
+<!-- <app-file-ops></app-file-ops> -->
+<!-- <app-login [caption]="title" (userdata)="login($event)"></app-login> -->
+<!-- <app-users></app-users> -->
+
+ <app-menu (menu)="menuitem($event)"></app-menu>
+<app-body [link]="link" [myhobbies]="myhobbies"></app-body>
+<h2 appHighlight>Default Yellow Highlight</h2>
+
+<h2 appHighlight="lightgreen">Light Green Highlight</h2>
+
+<p appHighlight="skyblue">
+  Hover over me to see a skyblue highlight effect!
+</p> 
+<app-body></app-body>
+<app-stylesample></app-stylesample>
+
+<app-style2></app-style2>
+{{title | reversepipe}} -->
+
+<h2>Angular Lifecycle Hooks Demo</h2>
+    <button (click)="changeData()">Change Data</button>
+    <button (click)="toggleChild()">Toggle Child Component</button>
+    <app-lifecycle  *ngIf="showChild" [data]="parentData"></app-lifecycle>
+
+<h2>Built-in pipes</h2>
+{{today | date:'fullDate'}}<br/>
+{{today | date:'shortTime'}}<br/>
+{{today | date:'short'}}<br/>
+{{today | date:'medium'}}<br/>
+{{today | date:'long'}}<br/>
+{{today | date:'custom':'dd/MM/yyyy HH:mm:ss'}} <br/>
+
+{{title | uppercase}}<br/>
+{{title | lowercase}}<br/>
+{{title | titlecase}}<br/>
+{{title | slice:0:5}}<br/>
+{{title | slice:5}}<br/>
+
+{{jsonData | json}}<br/>
+
+{{24 | currency:'USD':'symbol':'1.2-2'}}<br/>
+{{24 | currency:'EUR':'symbol':'1.2-2'}}<br/>
+{{24 | currency:'INR':'symbol':'1.2-2'}}<br/>
+{{2450 | currency:'AUD':'symbol':'1.2-2'}}<br/>
+{{24 | number:'3.2-2'}}<br/>
+{{0.24336 | percent:'1.2-3'}}<br/>
+
+
+<br/><br/>
+Number Pipes<br/>
+{{1234 | number :'1.2-2'}}<br/>
+{{1234 | number:'3.1-2'}}<br/>
+{{1234 | number:'3.0-0'}}<br/>
+{{1234 | number:'10.2-2'}}<br/> 

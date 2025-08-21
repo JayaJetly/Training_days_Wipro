@@ -1,0 +1,363 @@
+//******************************************************************//
+
+-- Step 1: Create the Employees4 table
+CREATE TABLE Employees4 (
+    EmpID INT PRIMARY KEY,                         -- Primary Key Index
+    Name VARCHAR(100),
+    DepartmentID INT,
+    Email VARCHAR(100),
+    Salary INT,
+    JobTitle VARCHAR(100),
+    Status VARCHAR(20)
+);
+
+-- Step 2: Insert sample data
+INSERT INTO Employees4 VALUES 
+(1, 'Alice', 101, 'alice@example.com', 60000, 'Manager', 'Active'),
+(2, 'Bob', 102, 'bob@example.com', 55000, 'Developer', 'Inactive'),
+(3, 'Charlie', 101, 'charlie@example.com', 70000, 'Developer', 'Active'),
+(4, 'David', 103, 'david@example.com', 50000, 'Tester', 'Active');
+
+
+-- Step 3: Create the Employees4 table
+CREATE TABLE Departments4 (
+    DeptID INT PRIMARY KEY,
+    Name VARCHAR(100)
+);
+
+
+Types of Indexes in SQL – With Examples
+Indexes help databases retrieve data efficiently by avoiding full table scans. Below are common types of indexes with use cases and SQL examples.
+
+1. Single-Column Index
+Definition: An index created on a single column.
+sql
+CopyEdit
+CREATE INDEX idx_employee_name ON Employees(Name);
+Use:
+Speeds up:
+sql
+CopyEdit
+SELECT * FROM Employees WHERE Name = 'Alice';
+
+2. Composite Index (Multi-Column Index)
+Definition: An index on two or more columns.
+sql
+CopyEdit
+CREATE INDEX idx_emp_dept ON Employees(DepartmentID, Name);
+Use:
+Optimized for:
+sql
+CopyEdit
+SELECT * FROM Employees WHERE DepartmentID = 2 AND Name = 'Bob';
+⚠️ Order matters: It will not work efficiently for just WHERE Name = 'Bob'.
+
+3. Unique Index
+Definition: Ensures values in a column (or combination) are unique.
+sql
+CopyEdit
+CREATE UNIQUE INDEX idx_email_unique ON Employees(Email);
+Use: Prevents duplicate emails.
+
+
+4. Primary Key Index
+Definition: Automatically created on a PRIMARY KEY.
+sql
+CopyEdit
+CREATE TABLE Departments (
+    DeptID INT PRIMARY KEY,
+    Name VARCHAR(100)
+);
+Use: Enforces uniqueness and improves row lookups.
+
+5. Clustered Index
+Definition: Sorts and stores the table rows based on the key.
+Only one per table.
+sql
+CopyEdit
+CREATE CLUSTERED INDEX idx_salary ON Employees(Salary);
+Use: Efficient for range queries like:
+sql
+CopyEdit
+SELECT * FROM Employees WHERE Salary BETWEEN 50000 AND 100000;
+
+6. Non-Clustered Index
+Definition: Stores a pointer to the actual data row.
+You can have many non-clustered indexes per table.
+sql
+CopyEdit
+CREATE NONCLUSTERED INDEX idx_jobtitle ON Employees(JobTitle);
+Use: Optimized lookups for specific columns.
+
+7. Full-Text Index
+Definition: Enables searching within text fields.
+sql
+CopyEdit
+CREATE FULLTEXT INDEX idx_description ON Products(Description);
+Use:
+sql
+CopyEdit
+SELECT * FROM Products WHERE MATCH(Description) AGAINST ('laptop');
+
+8. Filtered Index (SQL Server only)
+Definition: Indexes only rows that meet a condition.
+sql
+CopyEdit
+CREATE INDEX idx_active_employees ON Employees(Status)
+WHERE Status = 'Active';
+Use: Faster access to filtered datasets.
+
+9. Bitmap Index (Oracle)
+Definition: Efficient for columns with few distinct values (e.g., Gender).
+sql
+CopyEdit
+-- Oracle syntax
+CREATE BITMAP INDEX idx_gender ON Employees(Gender);
+Use: Low-cardinality values (e.g., Gender, Yes/No flags).
+
+
+
+**** Summary Table ------>
+
+Index TypeUse CaseExample Column(s)Single-ColumnBasic searchNameCompositeCombined filtersDepartmentID, NameUniqueEnforce uniquenessEmailPrimary KeyRow identificationIDClusteredRange queries / sortingSalaryNon-ClusteredGeneral purpose lookupsJobTitleFull-TextWord-based search in large text fieldsDescriptionFilteredConditional filteringStatus = 'Active'BitmapLow-cardinality columns (Oracle)Gender, MaritalStatus
+
+//******************************************************************//
+SELECT 
+    i.name AS IndexName,
+    i.type_desc AS IndexType,
+    c.name AS ColumnName,
+    ic.is_included_column,
+    i.is_unique,
+    i.is_primary_key
+FROM 
+    sys.indexes i
+INNER JOIN 
+    sys.index_columns ic ON i.object_id = ic.object_id AND i.index_id = ic.index_id
+INNER JOIN 
+    sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
+WHERE 
+    i.object_id = OBJECT_ID('employees');
+
+//******************************************************************//
+
+ MSSQL Stored Procedure Examples
+
+✅ 1. Simple Procedure (No Parameters)
+Example: Get all employees
+sql
+CopyEdit
+CREATE PROCEDURE GetAllEmployees
+AS
+BEGIN
+    SELECT * FROM Employees;
+END;
+Execution:
+sql
+CopyEdit
+EXEC GetAllEmployees;
+
+✅ 2. Procedure with Input Parameter
+Example: Get employees by department
+sql
+CopyEdit
+CREATE PROCEDURE GetEmployeesByDepartment
+    @DepartmentID INT
+AS
+BEGIN
+    SELECT * FROM Employees
+    WHERE DepartmentID = @DepartmentID;
+END;
+Execution:
+sql
+CopyEdit
+EXEC GetEmployeesByDepartment @DepartmentID = 2;
+
+✅ 3. Procedure with Multiple Input Parameters
+Example: Filter employees by department and minimum salary
+sql
+CopyEdit
+CREATE PROCEDURE GetEmployeesByDeptAndSalary
+    @DepartmentID INT,
+    @MinSalary MONEY
+AS
+BEGIN
+    SELECT * FROM Employees
+    WHERE DepartmentID = @DepartmentID
+      AND Salary >= @MinSalary;
+END;
+Execution:
+sql
+CopyEdit
+EXEC GetEmployeesByDeptAndSalary @DepartmentID = 1, @MinSalary = 50000;
+ 4. Procedure with Output Parameter
+Example: Get the total count of employees in a department
+sql
+CopyEdit
+CREATE PROCEDURE GetEmployeeCount
+    @DepartmentID INT,
+    @EmployeeCount INT OUTPUT
+AS
+BEGIN
+    SELECT @EmployeeCount = COUNT(*)
+    FROM Employees
+    WHERE DepartmentID = @DepartmentID;
+END;
+Execution and Reading Output:
+sql
+CopyEdit
+DECLARE @Count INT;
+EXEC GetEmployeeCount @DepartmentID = 3, @EmployeeCount = @Count OUTPUT;
+PRINT 'Total Employees: ' + CAST(@Count AS VARCHAR);
+
+✅ 5. Procedure with Default Parameter Value
+Example: Get employees by department, defaulting to department 1
+sql
+CopyEdit
+CREATE PROCEDURE GetEmployeesWithDefaultDept
+    @DepartmentID INT = 1
+AS
+BEGIN
+    SELECT * FROM Employees
+    WHERE DepartmentID = @DepartmentID;
+END;
+Execution:
+sql
+CopyEdit
+-- Using default (department 1)
+EXEC GetEmployeesWithDefaultDept;
+
+-- Specifying a different department
+EXEC GetEmployeesWithDefaultDept @DepartmentID = 2;
+6. Procedure with Transaction and Error Handling
+Example: Transfer salary from one employee to another
+sql
+CopyEdit
+CREATE PROCEDURE TransferSalary
+    @FromEmployeeID INT,
+    @ToEmployeeID INT,
+    @Amount MONEY
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        UPDATE Employees
+        SET Salary = Salary - @Amount
+        WHERE EmployeeID = @FromEmployeeID;
+
+        UPDATE Employees
+        SET Salary = Salary + @Amount
+        WHERE EmployeeID = @ToEmployeeID;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        PRINT 'Error occurred: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+Execution:
+sql
+CopyEdit
+EXEC TransferSalary @FromEmployeeID = 1, @ToEmployeeID = 2, @Amount = 500;
+
+✅ 7. Procedure Returning Result Sets and Messages
+Example: Return employee list and print a message
+sql
+CopyEdit
+CREATE PROCEDURE ShowEmployeesWithMessage
+AS
+BEGIN
+    SELECT * FROM Employees;
+    PRINT 'Employee list retrieved successfully.';
+END;
+
+Execution:
+sql
+CopyEdit
+EXEC ShowEmployeesWithMessage;
+
+✅ 8. Dropping a Stored Procedure
+Syntax:
+sql
+CopyEdit
+DROP PROCEDURE ProcedureName;
+Example:
+sql
+CopyEdit
+DROP PROCEDURE GetAllEmployees;
+//******************************************************************//
+Encryption code----->
+
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+
+public class AesEncryptionService
+{
+    // 256-bit key (32 bytes), you can store this securely elsewhere (e.g., environment variable or secret store)
+    private readonly byte[] _key = Encoding.UTF8.GetBytes("ThisIsASecretKeyForAES256Bit!!"); // Must be 32 chars
+    private readonly byte[] _iv = Encoding.UTF8.GetBytes("ThisIsAnIV123456"); // Must be 16 chars for AES
+
+    public string Encrypt(string plainText)
+    {
+        using (Aes aesAlg = Aes.Create())
+        {
+            aesAlg.Key = _key;
+            aesAlg.IV = _iv;
+
+            ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+            using MemoryStream msEncrypt = new();
+            using (CryptoStream csEncrypt = new(msEncrypt, encryptor, CryptoStreamMode.Write))
+            using (StreamWriter swEncrypt =new(csEncrypt))
+            {
+                swEncrypt.Write(plainText);
+            }
+
+            return Convert.ToBase64String(msEncrypt.ToArray());
+        }
+    }
+
+
+Decrypt----->
+
+public string Decrypt(string cipherText)
+    {
+        byte[] buffer = Convert.FromBase64String(cipherText);
+
+        using (Aes aesAlg = Aes.Create())
+        {
+            aesAlg.Key = _key;
+            aesAlg.IV = _iv;
+
+            ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+            using MemoryStream msDecrypt = new(buffer);
+            using CryptoStream csDecrypt = new(msDecrypt, decryptor, CryptoStreamMode.Read);
+            using StreamReader srDecrypt = new(csDecrypt);
+
+            return srDecrypt.ReadToEnd();
+        }
+    }
+}
+
+
+
+class Program
+{
+    static void Main()
+    {
+        var aes = new AesEncryptionService();
+
+        string original = "Hello, this is a secret message!";
+        Console.WriteLine("Original: " + original);
+
+        string encrypted = aes.Encrypt(original);
+        Console.WriteLine("Encrypted: " + encrypted);
+
+        string decrypted = aes.Decrypt(encrypted);
+        Console.WriteLine("Decrypted: " + decrypted);
+    }
+}

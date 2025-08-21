@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\wipro_training\\Testing\\Calculator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6DE4DAD6-1C5D-49AB-A5E3-FDF9CB6E742C}|MathLibrary.MStest\\MathLibrary.MStest.csproj|d:\\wipro_training\\testing\\calculator\\mathlibrary.mstest\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6DE4DAD6-1C5D-49AB-A5E3-FDF9CB6E742C}|MathLibrary.MStest\\MathLibrary.MStest.csproj|solutionrelative:mathlibrary.mstest\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2854938C-6211-42EC-AD71-987906CA77FC}|Calculator\\Calculator.csproj|d:\\wipro_training\\testing\\calculator\\calculator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2854938C-6211-42EC-AD71-987906CA77FC}|Calculator\\Calculator.csproj|solutionrelative:calculator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2854938C-6211-42EC-AD71-987906CA77FC}|Calculator\\Demo_Calculator.csproj|d:\\wipro_training\\testing\\calculator\\calculator\\calculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2854938C-6211-42EC-AD71-987906CA77FC}|Calculator\\Demo_Calculator.csproj|solutionrelative:calculator\\calculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2854938C-6211-42EC-AD71-987906CA77FC}|Calculator\\Demo_Calculator.csproj|d:\\wipro_training\\testing\\calculator\\calculator\\demo_calculator.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2854938C-6211-42EC-AD71-987906CA77FC}|Calculator\\Demo_Calculator.csproj|solutionrelative:calculator\\demo_calculator.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Test1.cs",
+              "DocumentMoniker": "D:\\wipro_training\\Testing\\Calculator\\MathLibrary.MStest\\Test1.cs",
+              "RelativeDocumentMoniker": "MathLibrary.MStest\\Test1.cs",
+              "ToolTip": "D:\\wipro_training\\Testing\\Calculator\\MathLibrary.MStest\\Test1.cs",
+              "RelativeToolTip": "MathLibrary.MStest\\Test1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T09:12:44.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Calculator.cs",
+              "DocumentMoniker": "D:\\wipro_training\\Testing\\Calculator\\Calculator\\Calculator.cs",
+              "RelativeDocumentMoniker": "Calculator\\Calculator.cs",
+              "ToolTip": "D:\\wipro_training\\Testing\\Calculator\\Calculator\\Calculator.cs",
+              "RelativeToolTip": "Calculator\\Calculator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T09:07:59.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Demo_Calculator",
+              "DocumentMoniker": "D:\\wipro_training\\Testing\\Calculator\\Calculator\\Demo_Calculator.csproj",
+              "RelativeDocumentMoniker": "Calculator\\Demo_Calculator.csproj",
+              "ToolTip": "D:\\wipro_training\\Testing\\Calculator\\Calculator\\Demo_Calculator.csproj",
+              "RelativeToolTip": "Calculator\\Demo_Calculator.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-07-28T09:00:03.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\wipro_training\\Testing\\Calculator\\Calculator\\Program.cs",
+              "RelativeDocumentMoniker": "Calculator\\Program.cs",
+              "ToolTip": "D:\\wipro_training\\Testing\\Calculator\\Calculator\\Program.cs",
+              "RelativeToolTip": "Calculator\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T08:22:34.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

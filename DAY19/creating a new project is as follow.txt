@@ -1,0 +1,805 @@
+creating a new project is as follows (step 1: npm I @angular/cli - do this if angular/cli is not installed, step2: ng new myapp --no-standalone
+*****************************************************************
+you have option to choose sytle.css or style.scss as global stype (choose css for now)
+*****************************************************************
+do not enable sever side
+*****************************************************************
+ 1. `ngOnChanges(changes: SimpleChanges)`
+
+ When it runs: Called before `ngOnInit` and whenever input-bound properties change.
+ Use case: Respond to changes in `@Input()` values from the parent component.
+
+
+
+ 2. `ngOnInit()`
+
+ When it runs: Once, after the first `ngOnChanges`.
+ Use case: Initialization logic, fetching data, setting up the component state.
+
+
+
+ 3. `ngDoCheck()`
+
+ When it runs: On every change detection run, after `ngOnInit` and `ngOnChanges`.
+ Use case: Custom change detection logic beyond Angular’s default.
+
+
+
+ 4. `ngAfterContentInit()`
+
+ When it runs: After content (from `<ng-content>`) is projected into the component.
+ Use case: Work with projected content for the first time.
+
+
+
+ 5. `ngAfterContentChecked()`
+
+ When it runs: After every check of projected content.
+ Use case: Respond after projected content is checked/updated.
+
+
+
+ 6. `ngAfterViewInit()`
+
+ When it runs: After component’s view and child views are initialized.
+ Use case: Access child components or DOM elements via `@ViewChild`.
+
+
+
+ 7. `ngAfterViewChecked()`
+
+ When it runs: After every check of the component’s view and child views.
+ Use case: Run logic after the view updates.
+
+
+
+ 8. `ngOnDestroy()`
+
+ When it runs: Just before Angular destroys the component.
+ Use case: Clean up — unsubscribe from observables, remove event listeners, release resources.
+
+*******************************************************************************
+
+ Topic 1 – Built-in Directives (ngIf, ngFor, ngClass, ngStyle) (20 MCQs)
+
+1. Which Angular directive is used to conditionally include or remove elements from the DOM?
+a) `ngFor`
+b) `ngIf` 
+c) `ngSwitch`
+d) `ngInclude`
+
+2. The `ngFor` directive is primarily used for:
+a) Conditional rendering
+b) Iterating over a collection 
+c) Applying CSS classes dynamically
+d) Adding inline styles
+
+3. Which syntax is correct for `ngIf` in Angular templates?
+a) `<div ng-if="condition">`
+b) `<div [ngIf]="condition">` 
+c) `<div (ngIf)="condition">`
+d) `<div ngIf="{{condition}}">`
+
+4. Which directive is best for adding or removing CSS classes dynamically?
+a) `ngIf`
+b) `ngFor`
+c) `ngClass` 
+d) `ngStyle`
+
+5. What type of value does `ngClass` accept?
+a) String
+b) Array
+c) Object
+d) All of the above 
+
+6. In `ngFor`, what variable provides the index of the current item?
+a) `index` 
+b) `$index`
+c) `idx`
+d) `count`
+
+7. Which directive is best suited for applying inline styles dynamically?
+a) `ngIf`
+b) `ngFor`
+c) `ngClass`
+d) `ngStyle` 
+
+8. Which of the following correctly applies `ngFor` to a list?
+a) `<li ngFor="item in items">{{item}}</li>`
+b) `<li *ngFor="let item of items">{{item}}</li>` 
+c) `<li [ngFor]="item in items">{{item}}</li>`
+d) `<li (ngFor)="let item in items">{{item}}</li>`
+
+9. The asterisk (\*) before `ngIf` or `ngFor` indicates:
+a) It’s a comment
+b) It’s shorthand for a structural directive 
+c) It’s required for all directives
+d) It’s a CSS selector
+
+10. Which directive can replace an element entirely if the condition is false?
+a) `ngFor`
+b) `ngClass`
+c) `ngIf` 
+d) `ngStyle`
+
+11. `ngIf` works at which Angular directive category?
+a) Attribute directive
+b) Structural directive 
+c) Component directive
+d) Service directive
+
+12. What is the correct syntax for applying multiple classes with `ngClass` using an object?
+a) `[ngClass]="'class1 class2'"`
+b) `[ngClass]="{'class1': true, 'class2': false}"` 
+c) `[ngClass]="class1: true, class2: false"`
+d) `[ngClass]="{{class1: true, class2: false}}"`
+
+13. Which of these is a valid example of using `ngStyle`?
+a) `[ngStyle]="{'color': 'red', 'font-size': '14px'}"` 
+b) `(ngStyle)="{'color': 'red'}"`
+c) `{ngStyle}="color: red"`
+d) `<ngStyle="{'color': 'red'}">`
+
+14. Which directive repeats HTML elements for each item in an array?
+a) `ngIf`
+b) `ngFor` 
+c) `ngClass`
+d) `ngStyle`
+
+15. Can `ngIf` and `ngFor` be used together on the same element?
+a) Yes, directly
+b) No, unless you use an `<ng-container>` 
+c) No, never
+d) Yes, but only in AngularJS
+
+16. In `ngFor`, the `trackBy` function is used for:
+a) Sorting
+b) Filtering
+c) Improving performance by tracking items 
+d) Adding CSS classes
+
+17. `ngClass` can be bound to:
+a) A string
+b) An array
+c) An object
+d) All of the above 
+
+18. Which directive is most suitable for showing or hiding an element without removing it from the DOM?
+a) `ngIf`
+b) `hidden` attribute 
+c) `ngFor`
+d) `ngClass`
+
+19. What happens if `ngIf` condition evaluates to `false`?
+a) The element remains hidden but in the DOM
+b) The element is removed from the DOM 
+c) The element is styled with `display:none`
+d) Nothing changes
+
+20. How does `ngStyle` differ from `ngClass`?
+a) `ngStyle` applies CSS classes
+b) `ngStyle` applies inline styles 
+c) `ngStyle` removes classes
+d) They are the same
+
+
+
+
+ Topic 2 – Custom Directives and Their Use (15 MCQs)
+
+1. What is the primary purpose of a custom directive in Angular?
+a) To create a new service
+b) To modify DOM behavior or appearance 
+c) To declare a new module
+d) To handle HTTP requests
+
+2. Which Angular CLI command generates a new directive?
+a) `ng generate component`
+b) `ng generate directive` 
+c) `ng generate pipe`
+d) `ng create directive`
+
+3. Custom directives in Angular are typically implemented as:
+a) Services
+b) Classes decorated with `@Directive()` 
+c) Classes decorated with `@Injectable()`
+d) Modules
+
+4. In a custom directive, the `selector` property in `@Directive()` is used to:
+a) Specify the directive's dependencies
+b) Define how the directive is applied in HTML 
+c) Set the directive's default styles
+d) Define lifecycle hooks
+
+5. Which of the following is an example of an attribute directive?
+a) `ngIf`
+b) `ngFor`
+c) `ngClass` 
+d) Component templates
+
+6. How do you apply a custom directive in HTML?
+a) By using it as a CSS class
+b) By using it as an HTML attribute 
+c) By importing it into CSS
+d) By declaring it in JavaScript only
+
+7. What is required for a directive to work in Angular?
+a) It must be registered in a module's `declarations` array 
+b) It must be installed via npm
+c) It must be placed in the `providers` array
+d) It must extend `DirectiveBase`
+
+8. Which decorator is mandatory for creating a custom directive?
+a) `@Component`
+b) `@Directive` 
+c) `@Injectable`
+d) `@NgModule`
+
+9. Which type of directive changes the DOM layout by adding or removing elements?
+a) Attribute directive
+b) Structural directive 
+c) Component directive
+d) Service directive
+
+10. Which of the following is NOT a valid way to pass data into a custom directive?
+a) Using `@Input()`
+b) Using `@Output()`
+c) Using service injection 
+d) Using property binding
+
+11. In a directive, which Angular feature allows you to listen to DOM events?
+a) `@ViewChild()`
+b) `@HostListener()` 
+c) `@HostBinding()`
+d) `@EventEmitter()`
+
+12. What is `@HostBinding()` used for in a custom directive?
+a) To bind a directive property to a host element property 
+b) To listen to events on the host element
+c) To create an input property
+d) To declare child directives
+
+13. Which of the following is an example of a structural directive?
+a) `ngStyle`
+b) `ngIf` 
+c) `ngClass`
+d) `ngModel`
+
+14. When creating a custom directive, which method is typically used for initialization logic?
+a) `ngOnInit()` 
+b) `ngDoCheck()`
+c) `ngAfterViewInit()`
+d) `constructor()` only
+
+15. Why might you use a custom attribute directive instead of a component?
+a) To render complex HTML
+b) To apply behavior or style without a new template 
+c) To handle HTTP requests
+d) To manage routing
+
+ Topic 3 – Using Angular Pipes for Data Transformation (10 MCQs)
+
+1. What is the main purpose of a pipe in Angular?
+a) To fetch data from APIs
+b) To transform data before display 
+c) To store state
+d) To handle DOM events
+
+2. Which symbol is used to apply a pipe in Angular templates?
+a) `:`
+b) `|` 
+c) `=>`
+d) `%`
+
+3. Which of the following is a built-in Angular pipe?
+a) `uppercase` 
+b) `dateFormat`
+c) `currencySymbol`
+d) `stringify`
+
+4. Pipes in Angular are:
+a) Classes decorated with `@Pipe()` 
+b) Services decorated with `@Injectable()`
+c) Modules decorated with `@NgModule()`
+d) HTML attributes
+
+5. What is the correct syntax for using the `date` pipe?
+a) `{{ today | date }}` 
+b) `{{ today : date }}`
+c) `{{ date(today) }}`
+d) `{{ date | today }}`
+
+6. Which pipe transforms a string into all uppercase letters?
+a) `upper`
+b) `uppercase` 
+c) `capitalize`
+d) `stringUpper`
+
+7. Pipes that do not change their output unless input changes are called:
+a) Pure pipes 
+b) Impure pipes
+c) Structural pipes
+d) Static pipes
+
+8. How do you create a custom pipe?
+a) Using `@Directive()`
+b) Using `@Pipe()` 
+c) Using `@Injectable()`
+d) Using `@Service()`
+
+9. Which method must every custom pipe class implement?
+a) `transform()` 
+b) `convert()`
+c) `process()`
+d) `map()`
+
+10. What is the default value of `pure` property in a custom pipe?
+a) `true` 
+b) `false`
+c) `null`
+d) `undefined`
+
+ Topic 4 – Practical: Applying Directives & Pipes in Real-World Examples (10 MCQs)
+
+1. You want to show a list of products and hide the list if there are no products. Which combination is best?
+a) `ngIf` with `ngClass`
+b) `ngIf` with `ngFor` 
+c) `ngClass` with `ngStyle`
+d) `ngIf` with `ngStyle`
+
+2. To display a list of prices formatted in currency, which combination should be used?
+a) `ngFor` with `currency` pipe 
+b) `ngFor` with `date` pipe
+c) `ngIf` with `json` pipe
+d) `ngClass` with `currency` pipe
+
+3. To toggle a "highlight" CSS class on a selected item in a list, you would use:
+a) `ngStyle`
+b) `ngClass` 
+c) `ngIf`
+d) `ngFor`
+
+4. If you want to show “No Data” when an array is empty and otherwise list items, you would use:
+a) `ngIf` in one container and `ngFor` in another 
+b) Only `ngFor`
+c) Only `ngIf`
+d) `ngStyle`
+
+5. To display a username in all uppercase when binding to a template:
+a) Use `ngStyle` with `text-transform: uppercase`
+b) Use `uppercase` pipe 
+c) Use `ngClass` with a CSS class
+d) Use `json` pipe
+
+6. You need to format a date as `MM/dd/yyyy` for each order in an order list. Best approach?
+a) `ngFor` with `date` pipe 
+b) `ngIf` with `date` pipe
+c) `ngStyle` with a format string
+d) `ngClass` with a date style
+
+7. To style alternate rows in a list differently, you can use:
+a) `ngStyle` with index-based condition 
+b) `ngIf` with `ngClass`
+c) `ngFor` with `uppercase` pipe
+d) `ngSwitch`
+
+8. When combining `ngFor` with a custom pipe to filter items, what must be considered?
+a) Pipes must be pure for performance 
+b) Pipes should always be impure
+c) `ngIf` must wrap the pipe
+d) Pipes can’t be used with `ngFor`
+
+9. Which is the correct syntax to iterate and apply a currency pipe?
+a) `<li *ngFor="let price of prices">{{ price | currency }}</li>` 
+b) `<li *ngFor="let price of prices">{{ currency(price) }}</li>`
+c) `<li *ngFor="let price of prices">{{ currency | price }}</li>`
+d) `<li ngFor="price in prices">{{ price | currency }}</li>`
+
+10. If a custom directive changes background color on mouse hover, which decorator is likely used?
+a) `@Input()`
+b) `@HostBinding()` and `@HostListener()` 
+c) `@Output()`
+d) `@Pipe()`
+
+ Topic 5 – Inline, External, and Scoped Styles (15 MCQs)
+
+1. Which property in a component’s metadata is used to define inline styles?
+a) `styleUrls`
+b) `styles` 
+c) `template`
+d) `inlineStyles`
+
+2. Which property is used to apply external stylesheets to a component?
+a) `styles`
+b) `styleUrls` 
+c) `cssFiles`
+d) `linkStyles`
+
+3. Inline styles in Angular components are defined using:
+a) An array of CSS strings 
+b) A `.css` file path
+c) HTML attributes only
+d) SCSS variables only
+
+4. External styles are linked in a component by:
+a) `styleUrls: ['./file.css']` 
+b) `styles: ['./file.css']`
+c) Adding `<link>` in the template
+d) Adding to `tsconfig.json`
+
+5. By default, Angular applies which style encapsulation mode?
+a) `Emulated` 
+b) `None`
+c) `ShadowDom`
+d) `Global`
+
+6. Which encapsulation mode disables scoping of styles?
+a) `Emulated`
+b) `None` 
+c) `ShadowDom`
+d) `Scoped`
+
+7. Which encapsulation mode uses the browser’s native Shadow DOM?
+a) `Emulated`
+b) `None`
+c) `ShadowDom` 
+d) `Scoped`
+
+8. Which is true about styles defined in `styles` property?
+a) They apply globally
+b) They apply only to the component 
+c) They apply only in `index.html`
+d) They override `styleUrls`
+
+9. Where can you define global styles in an Angular application?
+a) `styles.css` 
+b) `index.ts`
+c) `main.ts`
+d) Component class
+
+10. In `Emulated` encapsulation, Angular scopes styles by:
+a) Using a unique attribute selector 
+b) Adding an inline `<style>` tag in index.html
+c) Creating a separate CSS file
+d) Disabling view encapsulation
+
+11. Which is NOT a valid style encapsulation value in Angular?
+a) `ViewEncapsulation.Emulated`
+b) `ViewEncapsulation.None`
+c) `ViewEncapsulation.Native`  (deprecated, replaced by ShadowDom)
+d) `ViewEncapsulation.ShadowDom`
+
+12. If you want a style to affect all components, where should you put it?
+a) In the component’s `styles` property
+b) In `styles.css` 
+c) In the component’s `styleUrls` property
+d) In a directive
+
+13. Scoped styles in Angular mean:
+a) Styles affect only the current component 
+b) Styles affect all components
+c) Styles are always inline
+d) Styles are stored in a service
+
+14. Which file is commonly used for defining theme-wide variables in SCSS?
+a) `_variables.scss` 
+b) `theme.ts`
+c) `global.css`
+d) `index.scss`
+
+15. To change encapsulation for a component, which import is used?
+a) `import { ViewEncapsulation } from '@angular/core';` 
+b) `import { Encapsulation } from '@angular/styles';`
+c) `import { ShadowDom } from '@angular/platform-browser';`
+d) `import { Styles } from '@angular/common';`
+
+ Topic 6 – Best Practices for Styling Angular Components (10 MCQs)
+
+1. Which is the recommended way to scope styles to a component?
+a) Use `styles.css` for everything
+b) Use component-specific `styleUrls` or `styles` 
+c) Use inline `<style>` tags in the template
+d) Use JavaScript to apply styles
+
+2. Why should you avoid deep CSS selectors like `::ng-deep` when possible?
+a) They are not supported by Angular
+b) They break style encapsulation and may be deprecated 
+c) They slow down TypeScript compilation
+d) They only work in Shadow DOM mode
+
+3. Which CSS methodology is often recommended for maintainable Angular styles?
+a) BEM (Block Element Modifier) 
+b) SMACSS
+c) Inline-only styling
+d) Random naming
+
+4. What is the benefit of using SCSS instead of plain CSS in Angular?
+a) Faster load time
+b) Variables, nesting, mixins, and better maintainability 
+c) Automatic encapsulation
+d) Smaller bundle size
+
+5. Where should global reset styles be placed?
+a) In each component’s `styleUrls`
+b) In `styles.css` or `styles.scss` 
+c) In `app.component.css` only
+d) In a directive
+
+6. Which approach helps reduce CSS conflicts in Angular apps?
+a) Using unique class names 
+b) Using inline `style` attributes everywhere
+c) Using only global styles
+d) Avoiding component styles altogether
+
+7. Why is it not recommended to put all styles in `styles.css`?
+a) It makes debugging harder 
+b) It breaks TypeScript
+c) Angular will not compile it
+d) Browsers can’t load large files
+
+8. Which Angular feature can be used to toggle styles dynamically?
+a) `ngStyle` and `ngClass` 
+b) CSS only
+c) `styleUrls` only
+d) Inline HTML tags
+
+9. Why should you keep component styles small and focused?
+a) For better style encapsulation and easier maintenance 
+b) Because Angular only allows small files
+c) To improve CLI speed
+d) To avoid lazy loading issues
+
+10. What is the advantage of using theme files in Angular styling?
+a) To avoid writing any CSS
+b) To centralize and reuse style variables 
+c) To automatically compile to JavaScript
+d) To remove encapsulation
+
+
+ Topic 7 – Component Lifecycle Methods (15 MCQs)
+
+1. Which lifecycle hook is called once, after the first `ngOnChanges()`?
+a) `ngAfterViewInit()`
+b) `ngOnInit()` 
+c) `ngDoCheck()`
+d) `ngAfterContentInit()`
+
+2. Which lifecycle hook is triggered when input properties change?
+a) `ngOnInit()`
+b) `ngOnChanges()` 
+c) `ngDoCheck()`
+d) `ngOnDestroy()`
+
+3. What does `ngOnDestroy()` typically handle?
+a) Rendering templates
+b) Cleaning up resources like subscriptions 
+c) Initializing properties
+d) Checking for changes
+
+4. Which hook runs after Angular projects content into a component’s view?
+a) `ngAfterContentInit()` 
+b) `ngAfterViewInit()`
+c) `ngDoCheck()`
+d) `ngOnChanges()`
+
+5. Which lifecycle hook runs after Angular initializes the component’s views and child views?
+a) `ngAfterViewInit()` 
+b) `ngAfterContentInit()`
+c) `ngDoCheck()`
+d) `ngOnDestroy()`
+
+6. Which hook runs every time change detection is triggered?
+a) `ngOnInit()`
+b) `ngDoCheck()` 
+c) `ngAfterViewInit()`
+d) `ngAfterContentChecked()`
+
+7. Which hook is ideal for initializing data from a service?
+a) `ngOnInit()` 
+b) `ngOnChanges()`
+c) `ngAfterViewInit()`
+d) `ngOnDestroy()`
+
+8. Which hook is called after every check of a component’s content?
+a) `ngAfterViewChecked()`
+b) `ngAfterContentChecked()` 
+c) `ngDoCheck()`
+d) `ngAfterViewInit()`
+
+9. In which hook can you safely access child view elements via `@ViewChild()`?
+a) `ngAfterViewInit()` 
+b) `ngOnInit()`
+c) `ngDoCheck()`
+d) `ngOnChanges()`
+
+10. Which hook is invoked immediately after a directive’s data-bound properties are initialized?
+a) `ngOnInit()` 
+b) `ngOnDestroy()`
+c) `ngDoCheck()`
+d) `ngAfterContentInit()`
+
+11. Which lifecycle hook runs before `ngOnInit()` if there are input changes?
+a) `ngDoCheck()`
+b) `ngOnChanges()` 
+c) `ngAfterContentInit()`
+d) `ngAfterViewChecked()`
+
+12. Which hook should be used to manually detect and act on changes that Angular might not pick up automatically?
+a) `ngDoCheck()` 
+b) `ngOnInit()`
+c) `ngOnChanges()`
+d) `ngAfterViewInit()`
+
+13. Which hook is called after every check of a component’s view?
+a) `ngAfterViewChecked()` 
+b) `ngAfterContentChecked()`
+c) `ngOnInit()`
+d) `ngOnDestroy()`
+
+14. The order of first-time lifecycle hook calls is:
+a) `ngOnChanges` → `ngOnInit` → `ngDoCheck` 
+b) `ngOnInit` → `ngOnChanges` → `ngDoCheck`
+c) `ngDoCheck` → `ngOnInit` → `ngOnChanges`
+d) `ngOnChanges` → `ngDoCheck` → `ngOnInit`
+
+15. Which lifecycle hook is called when Angular destroys a directive or component?
+a) `ngOnDestroy()` 
+b) `ngAfterViewChecked()`
+c) `ngOnInit()`
+d) `ngDoCheck()`
+
+
+ Topic 8 – Understanding Lifecycle Hooks (15 MCQs)
+
+1. What is the primary role of `ngOnInit()`?
+a) Respond to changes in input properties
+b) Perform component initialization logic 
+c) Destroy the component
+d) Bind DOM events
+
+2. Which hook is called when a bound input property value changes?
+a) `ngOnChanges()` 
+b) `ngOnInit()`
+c) `ngAfterViewInit()`
+d) `ngOnDestroy()`
+
+3. The `ngOnChanges()` hook receives which argument?
+a) `SimpleChange`
+b) `SimpleChanges` 
+c) `ChangeDetectorRef`
+d) `EventEmitter`
+
+4. Which hook is the best place to fetch data from a backend service when the component loads?
+a) `ngOnChanges()`
+b) `ngOnInit()` 
+c) `ngDoCheck()`
+d) `ngAfterViewInit()`
+
+5. When does `ngOnDestroy()` run?
+a) After the first `ngOnInit()`
+b) Just before Angular removes the component from the DOM 
+c) Before `ngAfterViewChecked()`
+d) Only when the app closes
+
+6. Which hook is called after Angular has fully initialized all of a component's content?
+a) `ngAfterViewInit()`
+b) `ngAfterContentInit()` 
+c) `ngAfterContentChecked()`
+d) `ngDoCheck()`
+
+7. Which hook is used to react to every change detection cycle, even without input changes?
+a) `ngOnInit()`
+b) `ngDoCheck()` 
+c) `ngOnChanges()`
+d) `ngOnDestroy()`
+
+8. Which hook is called after each check of a component’s view?
+a) `ngAfterViewChecked()` 
+b) `ngAfterContentChecked()`
+c) `ngAfterViewInit()`
+d) `ngOnChanges()`
+
+9. What is the correct sequence when input changes occur after initialization?
+a) `ngOnChanges()` → `ngDoCheck()` → `ngAfterContentChecked()` → `ngAfterViewChecked()` 
+b) `ngOnChanges()` → `ngOnInit()` → `ngDoCheck()`
+c) `ngDoCheck()` → `ngOnChanges()` → `ngOnInit()`
+d) `ngAfterViewInit()` → `ngOnDestroy()`
+
+10. Which hook is recommended for setting up subscriptions to observables?
+a) `ngOnInit()` 
+b) `ngOnChanges()`
+c) `ngAfterViewChecked()`
+d) `ngOnDestroy()`
+
+11. Which hook is ideal for unsubscribing from observables to prevent memory leaks?
+a) `ngAfterViewInit()`
+b) `ngOnDestroy()` 
+c) `ngOnInit()`
+d) `ngDoCheck()`
+
+12. Which hook is triggered only once in the component’s lifetime?
+a) `ngOnInit()` 
+b) `ngOnChanges()`
+c) `ngDoCheck()`
+d) `ngAfterViewChecked()`
+
+13. In which hook can you access projected content with `@ContentChild()`?
+a) `ngAfterViewInit()`
+b) `ngAfterContentInit()` 
+c) `ngOnInit()`
+d) `ngDoCheck()`
+
+14. Which hook is ideal for updating the view after the first render?
+a) `ngAfterViewInit()` 
+b) `ngAfterContentChecked()`
+c) `ngDoCheck()`
+d) `ngOnInit()`
+
+15. Which hook is useful for custom change detection logic beyond Angular’s default?
+a) `ngDoCheck()` 
+b) `ngOnInit()`
+c) `ngAfterViewChecked()`
+d) `ngOnChanges()`
+
+
+ 6. Practical Exercises: Applying Directives and Pipes in Real-World Examples (10 MCQs)
+
+Q1. You want to display a list of products but hide those with `inStock = false`. Which is the best directive to use?
+a) `*ngClass`
+b) `*ngIf` 
+c) `*ngStyle`
+d) `*ngFor`
+
+Q2. To apply currency formatting to product prices in the HTML template, you should use:
+a) Custom Directive
+b) Currency Pipe 
+c) Date Pipe
+d) NgStyle
+
+Q3. You want to display users in a table and alternate row colors. Which is the best approach?
+a) `ngStyle` with conditional binding 
+b) `ngClass` with a single CSS class
+c) Inline styles only
+d) `ngIf`
+
+Q4. Which combination correctly shows a list of active tasks with a red background?
+a) `*ngIf="task.active" [ngClass]="'red-bg'"` 
+b) `*ngFor` with inline styles
+c) Date Pipe and ngClass
+d) Only ngIf
+
+Q5. If you need to capitalize all product names when displaying them, the most efficient way is to:
+a) Create a custom directive
+b) Use the `uppercase` pipe 
+c) Use ngClass
+d) Use ngStyle
+
+Q6. To show “No Data” only when the array is empty, you would:
+a) Use `ngClass` with conditions
+b) Use `*ngIf="!array.length"` 
+c) Use Date Pipe
+d) Use ngStyle
+
+Q7. If you want to format the date of order creation in “dd/MM/yyyy” format, use:
+a) Currency Pipe
+b) Date Pipe 
+c) Percent Pipe
+d) Json Pipe
+
+Q8. Which of the following is best for changing background color based on status?
+a) `*ngIf`
+b) `[ngStyle]` 
+c) Currency Pipe
+d) Async Pipe
+
+Q9. To iterate over a set of product categories, you would use:
+a) `*ngIf`
+b) `*ngFor` 
+c) `ngStyle`
+d) Date Pipe
+
+Q10. Which is most suitable for showing a dynamic list and formatting each element’s price?
+a) `*ngFor` + Currency Pipe 
+b) `*ngIf` + Date Pipe
+c) `ngClass` + Percent Pipe
+d) `ngStyle` only

@@ -1,0 +1,11 @@
+<button (click)="getusers()">Get users</button>
+
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.firstName }} - {{ user.age }} - {{user.email}} - {{user.id}}
+  </li>
+  </ul>
+
+
+
+  

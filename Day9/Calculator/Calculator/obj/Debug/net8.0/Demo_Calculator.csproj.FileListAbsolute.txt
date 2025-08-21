@@ -1,0 +1,14 @@
+D:\wipro_training\Testing\Calculator\Calculator\bin\Debug\net8.0\Demo_Calculator.exe
+D:\wipro_training\Testing\Calculator\Calculator\bin\Debug\net8.0\Demo_Calculator.deps.json
+D:\wipro_training\Testing\Calculator\Calculator\bin\Debug\net8.0\Demo_Calculator.runtimeconfig.json
+D:\wipro_training\Testing\Calculator\Calculator\bin\Debug\net8.0\Demo_Calculator.dll
+D:\wipro_training\Testing\Calculator\Calculator\bin\Debug\net8.0\Demo_Calculator.pdb
+D:\wipro_training\Testing\Calculator\Calculator\obj\Debug\net8.0\Demo_Calculator.GeneratedMSBuildEditorConfig.editorconfig
+D:\wipro_training\Testing\Calculator\Calculator\obj\Debug\net8.0\Demo_Calculator.AssemblyInfoInputs.cache
+D:\wipro_training\Testing\Calculator\Calculator\obj\Debug\net8.0\Demo_Calculator.AssemblyInfo.cs
+D:\wipro_training\Testing\Calculator\Calculator\obj\Debug\net8.0\Demo_Calculator.csproj.CoreCompileInputs.cache
+D:\wipro_training\Testing\Calculator\Calculator\obj\Debug\net8.0\Demo_Calculator.dll
+D:\wipro_training\Testing\Calculator\Calculator\obj\Debug\net8.0\refint\Demo_Calculator.dll
+D:\wipro_training\Testing\Calculator\Calculator\obj\Debug\net8.0\Demo_Calculator.pdb
+D:\wipro_training\Testing\Calculator\Calculator\obj\Debug\net8.0\Demo_Calculator.genruntimeconfig.cache
+D:\wipro_training\Testing\Calculator\Calculator\obj\Debug\net8.0\ref\Demo_Calculator.dll

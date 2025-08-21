@@ -1,0 +1,16 @@
+C:\Users\jayaj\OneDrive\Desktop\week2\Day9\Day11\Day11\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\jayaj\OneDrive\Desktop\week2\Day9\Day11\Day11\obj\Debug\net8.0\Day11.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jayaj\OneDrive\Desktop\week2\Day9\Day11\Day11\obj\Debug\net8.0\Day11.AssemblyInfoInputs.cache
+C:\Users\jayaj\OneDrive\Desktop\week2\Day9\Day11\Day11\obj\Debug\net8.0\Day11.AssemblyInfo.cs
+C:\Users\jayaj\OneDrive\Desktop\week2\Day9\Day11\Day11\obj\Debug\net8.0\Day11.csproj.CoreCompileInputs.cache
+C:\Users\jayaj\OneDrive\Desktop\week2\Day9\Day11\Day11\obj\Debug\net8.0\Day11.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jayaj\OneDrive\Desktop\week2\Day9\Day11\Day11\obj\Debug\net8.0\Day11.RazorAssemblyInfo.cache
+C:\Users\jayaj\OneDrive\Desktop\week2\Day9\Day11\Day11\obj\Debug\net8.0\Day11.RazorAssemblyInfo.cs
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\Day11\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\Day11\obj\Debug\net8.0\Day11.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\Day11\obj\Debug\net8.0\Day11.AssemblyInfoInputs.cache
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\Day11\obj\Debug\net8.0\Day11.AssemblyInfo.cs
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\Day11\obj\Debug\net8.0\Day11.csproj.CoreCompileInputs.cache
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\Day11\obj\Debug\net8.0\Day11.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\Day11\obj\Debug\net8.0\Day11.RazorAssemblyInfo.cache
+C:\Users\jayaj\OneDrive\Desktop\All_Codes_Wipro\Day11\obj\Debug\net8.0\Day11.RazorAssemblyInfo.cs
