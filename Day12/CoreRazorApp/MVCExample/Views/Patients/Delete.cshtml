@@ -1,0 +1,28 @@
+﻿@model MVCExample.Models.Patient
+
+<form action="Delete" method="post">
+    <div>
+        @Html.HiddenFor(e => e.Id)
+        <label>@Html.DisplayNameFor(e => e.Name)</label>
+        @Html.DisplayFor(e => e.Name)
+    </div>
+    <div>
+        <label>@Html.DisplayNameFor(e => e.Description)</label>
+        <p>@Html.DisplayFor(e => e.Description)</p>
+    </div>
+    <div><p>Are you sure?  The data will be deleted</p></div>
+    <div><input type="submit" class="btn btn-danger" /></div>
+</form>
+public IActionResult Delete(int Id)
+    {
+        return View(_context.patients.Find(Id));
+    }
+
+    [HttpPost,ActionName("Delete")]
+    public IActionResult DeleteMethod(int Id)
+    {
+        _context.patients.Remove(_context.patients.Find(Id));
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+
+    }
