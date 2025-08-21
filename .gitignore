@@ -1,0 +1,10 @@
+*.user
+*.suo
+*.db
+*.log
+*.sln
+obj
+bin
+*.dll
+*vs
+*cspro

@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "v0T/AM5Y8Wg=",
   "success": true,
   "projectFilePath": "C:\\Users\\jayaj\\OneDrive\\Desktop\\All_Codes_Wipro\\Day11\\Day11.csproj",
+=======
+  "dgSpecHash": "FQi/CVa47fM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jayaj\\OneDrive\\Desktop\\All_Codes_Wipro\\Training_days_Wipro\\Day11\\Day11.csproj",
+>>>>>>> eddba4759c38f48a3794bfa253ee0ab11b960d42
   "expectedPackageFiles": [],
   "logs": []
 }

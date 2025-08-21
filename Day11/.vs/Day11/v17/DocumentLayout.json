@@ -28,7 +28,11 @@
               "RelativeDocumentMoniker": "Controllers\\PatientsController.cs",
               "ToolTip": "C:\\Users\\jayaj\\OneDrive\\Desktop\\All_Codes_Wipro\\Day11\\Controllers\\PatientsController.cs",
               "RelativeToolTip": "Controllers\\PatientsController.cs",
+<<<<<<< HEAD
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAaAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBUAAAAaAAAAAAAAAA==",
+>>>>>>> eddba4759c38f48a3794bfa253ee0ab11b960d42
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-31T06:59:57.458Z",
               "EditorCaption": ""
@@ -43,7 +47,12 @@
               "RelativeToolTip": "Views\\Patients\\Index.cshtml",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAACYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+<<<<<<< HEAD
               "WhenOpened": "2025-07-31T06:58:49.299Z"
+=======
+              "WhenOpened": "2025-07-31T06:58:49.299Z",
+              "EditorCaption": ""
+>>>>>>> eddba4759c38f48a3794bfa253ee0ab11b960d42
             }
           ]
         }
