@@ -1,0 +1,176 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "fsapp": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/fsapp",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": [
+             
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "fsapp:build:production"
+            },
+            "development": {
+              "buildTarget": "fsapp:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}
+
+
+*********************************************
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { FileOpsComponent } from './component/file-ops/file-ops.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { UsersComponent } from './component/users/users.component';
+@NgModule({
+  declarations: [
+    AppComponent,
+    FileOpsComponent,
+    LoginComponent,
+    RegisterComponent,
+    UsersComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+        
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+*****************************************
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UsersComponent } from './users.component';
+describe('UsersComponent', () => {
+  let component: UsersComponent;
+  let fixture: ComponentFixture<UsersComponent>;
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [UsersComponent]
+    })
+    .compileComponents();
+    fixture = TestBed.createComponent(UsersComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+*********************************************
+
+<button (click)="getusers()">Get users</button>
+<label>User name</label><input type="text" name="firstName" placeholder="new user" [(ngModel)]="firstName"/><br/>
+<label>Age</label>
+<input type="number" name="age" placeholder="age" [(ngModel)]="age"/><br/>
+<button (click)="addUser()">Add User</button>
+<br/><br/><br/>
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.firstName }} - {{ user.age }}
+  </li>
+  </ul>

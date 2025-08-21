@@ -1,0 +1,93 @@
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Session timeout
+    options.Cookie.HttpOnly = true;                 // Prevent JS access
+    options.Cookie.IsEssential = true;              // Required for GDPR
+});
+
+
+app.UseSession();
+
+
+***********************************************
+
+using System.Text.Json;
+
+public static class SessionExtensions
+{
+    public static void SetObject<T>(this ISession session, string key, T value)
+    {
+        session.SetString(key, JsonSerializer.Serialize(value));
+    }
+
+    public static T? GetObject<T>(this ISession session, string key)
+    {
+        var value = session.GetString(key);
+        return value == null ? default : JsonSerializer.Deserialize<T>(value);
+    }
+}
+
+**********************************************
+
+
+var user = new { Id = 1, Name = "Ramesh" };
+HttpContext.Session.SetObject("CurrentUser", user);
+
+var currentUser = HttpContext.Session.GetObject<dynamic>("CurrentUser");
+
+=====================================
+
+Accessing session in page
+@inject IHttpContextAccessor HttpContextAccessor
+
+<p>Hello, @HttpContextAccessor.HttpContext.Session.GetString("UserName")</p>
+
+**********************************************
+
+Create Cookie
+
+public IActionResult SetCookie()
+{
+    CookieOptions options = new CookieOptions
+    {
+        Expires = DateTimeOffset.UtcNow.AddMinutes(30), // Expiry time
+        HttpOnly = true,                                // Not accessible from JS
+        Secure = true,                                  // Only over HTTPS
+        IsEssential = true                              // For GDPR consent
+    };
+
+    Response.Cookies.Append("UserName", "Ramesh", options);
+
+    return Content("Cookie has been set.");
+}
+
+Read Cookie
+
+public IActionResult GetCookie()
+{
+    string? userName = Request.Cookies["UserName"];
+    return Content($"Hello, {userName ?? "Guest"}");
+}
+
+Delete cookie
+
+public IActionResult DeleteCookie()
+{
+    Response.Cookies.Delete("UserName");
+    return Content("Cookie deleted.");
+}
+
+**********************************************
+
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.CheckConsentNeeded = context => true;  // Ask for consent
+    options.MinimumSameSitePolicy = SameSiteMode.Strict;
+});
+
+**********************************************
+
+app.UseCookiePolicy();
+
+**********************************************
+

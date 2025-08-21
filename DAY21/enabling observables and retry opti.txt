@@ -1,0 +1,120 @@
+enabling observables and retry options
+
+****************************************************************************************
+
+
+step 1: npm install rxjs
+
+****************************************************************************************
+
+step 2: import { retry,catchError,Observable } from 'rxjs'; (in dataservice component)
+
+
+****************************************************************************************
+
+
+private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+
+****************************************************************************************
+
+getPosts(): Observable<any> {
+    return this.http.get(this.apiUrl).pipe(
+      retry(3), // Retry up to 3 times if the request fails
+      catchError((error) => {
+        console.error('Error after 3 retries:', error);
+        throw error;
+      })
+    );
+  }
+
+****************************************************************************************
+
+in users.component.ts
+
+****************************************************************************************
+
+
+this.dataService.getPosts().subscribe({
+      next: (data) => console.log('Data received:', data),
+      error: (err) => console.error('Final error after retries:', err),
+    });
+  }
+
+****************************************************************************************
+
+
+you can do the api call inside ngOnInit
+
+****************************************************************************************
+
+  ngOnInit(): void {
+    this.dataService.getPosts().subscribe({
+      next: (data) => console.log('Data received:', data),
+      error: (err) => console.error('Final error after retries:', err),
+    });
+  }
+********************************************************************************************
+db.json(backend)
+{ "alumi":[ {"name":"xyz","year":2012},{"name":"abc",":2012}]}
+
+********************************************************************************************
+
+ "json:server": "json-server --watch db.json --port 3000"
+
+********************************************************************************************
+
+npm run json:server db.json
+
+********************************************************************************************
+
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+@Component({
+  selector: 'app-reactiveform',
+  standalone: false,
+  templateUrl: './reactiveform.component.html',
+  styleUrl: './reactiveform.component.css'
+})
+export class ReactiveformComponent {
+loginForm: FormGroup;
+  constructor(private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+  onSubmit() {
+    if (this.loginForm.valid) {
+      console.log('Login data:', this.loginForm.value);
+      alert('Login Successful!');
+    } else {
+      this.loginForm.markAllAsTouched(); // Show errors
+    }
+  }
+}
+
+
+********************************************************************************************
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <!-- Email -->
+  <label>Email:</label>
+  <input type="email" formControlName="email" />
+  <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" style="color:red;">
+    <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+    <small *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format.</small>
+  </div>
+  <br />
+  <!-- Password -->
+  <label>Password:</label>
+  <input type="password" formControlName="password" />
+  <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" style="color:red;">
+    <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+    <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+      Password must be at least 6 characters.
+    </small>
+  </div>
+  <br />
+  <!-- Submit -->
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>
+
