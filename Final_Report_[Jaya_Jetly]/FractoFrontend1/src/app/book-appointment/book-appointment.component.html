@@ -1,0 +1,27 @@
+<div *ngIf="doctor">
+  <h2>Book Appointment with {{ doctor.name }}</h2>
+  <p><strong>Specialization:</strong> {{ doctor.specialization?.specializationName }}</p>
+  <p><strong>City:</strong> {{ doctor.city }}</p>
+
+  <div>
+    <label for="appointmentDate">Select Date:</label>
+    <input type="date" id="appointmentDate" [(ngModel)]="appointmentDate" (change)="onDateChange()">
+  </div>
+
+  <div *ngIf="availableTimeSlots.length > 0">
+    <h3>Available Time Slots</h3>
+    <select [(ngModel)]="selectedTimeSlot">
+      <option value="" disabled>Select a time slot</option>
+      <option *ngFor="let slot of availableTimeSlots" [value]="slot">{{ slot }}</option>
+    </select>
+  </div>
+  <p *ngIf="availableTimeSlots.length === 0">No available slots for this date.</p>
+
+  <button (click)="bookAppointment()" [disabled]="!selectedTimeSlot">Book Appointment</button>
+
+  <p *ngIf="message">{{ message }}</p>
+</div>
+
+<div *ngIf="!doctor">
+  <p>Loading doctor details...</p>
+</div>

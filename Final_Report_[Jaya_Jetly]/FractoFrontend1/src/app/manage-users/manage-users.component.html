@@ -1,0 +1,49 @@
+<h2>Manage Users</h2>
+
+<p *ngIf="message">{{ message }}</p>
+
+<div class="user-form">
+  <h3>{{ selectedUser ? 'Edit User' : 'Create New User' }}</h3>
+  <label for="username">Username:</label>
+  <input type="text" id="username" [(ngModel)]="currentUsername" name="username" required>
+
+  <label for="password">Password (leave blank to keep current):</label>
+  <input type="password" id="password" [(ngModel)]="currentPassword" name="password" [required]="!selectedUser">
+
+  <label for="role">Role:</label>
+  <select id="role" [(ngModel)]="currentRole" name="role">
+    <option value="User">User</option>
+    <option value="Admin">Admin</option>
+  </select>
+
+  <button *ngIf="!selectedUser" (click)="createUser()">Create User</button>
+  <button *ngIf="selectedUser" (click)="updateUser()">Update User</button>
+  <button (click)="clearSelection()">Clear</button>
+</div>
+
+<hr>
+
+<h3>Existing Users</h3>
+<table *ngIf="users.length > 0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.userId }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <button (click)="selectUser(user)">Edit</button>
+        <button (click)="deleteUser(user.userId!)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="users.length === 0">No users found.</p>

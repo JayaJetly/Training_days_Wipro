@@ -1,0 +1,65 @@
+<h2>Manage Doctors</h2>
+
+<h3>Add New Doctor</h3>
+<form (ngSubmit)="addDoctor()">
+  <div>
+    <label for="newDoctorName">Name:</label>
+    <input type="text" id="newDoctorName" [(ngModel)]="newDoctor.name" name="newDoctorName" required>
+  </div>
+  <div>
+    <label for="newDoctorSpecialization">Specialization:</label>
+    <select id="newDoctorSpecialization" [(ngModel)]="newDoctor.specializationId" name="newDoctorSpecialization" required>
+      <option value="" disabled selected>Select Specialization</option> <!-- Added default option -->
+      <option *ngFor="let spec of specializations" [ngValue]="spec.specializationId">{{ spec.specializationName }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="newDoctorCity">City:</label>
+    <input type="text" id="newDoctorCity" [(ngModel)]="newDoctor.city" name="newDoctorCity" required>
+  </div>
+  <div>
+    <label for="newDoctorRating">Rating:</label>
+    <!-- MODIFIED LINE -->
+    <input type="number" id="newDoctorRating" [(ngModel)]="newDoctor.rating" name="newDoctorRating" required max="5" step="0.1">
+  </div>
+  <button type="submit">Add Doctor</button>
+</form>
+
+<h3>Existing Doctors</h3>
+<ul *ngIf="doctors.length > 0">
+  <li *ngFor="let doctor of doctors">
+    {{ doctor.name }} ({{ getSpecializationName(doctor.specialization?.specializationId) }}) - {{ doctor.city }} - Rating: {{ doctor.rating }}
+    <button (click)="editDoctor(doctor)">Edit</button>
+    <button (click)="deleteDoctor(doctor.doctorId)">Delete</button>
+  </li>
+</ul>
+<p *ngIf="doctors.length === 0">No doctors found.</p>
+
+<div *ngIf="editingDoctor">
+  <h3>Edit Doctor</h3>
+  <form (ngSubmit)="updateDoctor()">
+    <div>
+      <label for="editDoctorName">Name:</label>
+      <input type="text" id="editDoctorName" [(ngModel)]="editingDoctor.name" name="editDoctorName" required>
+    </div>
+    <div>
+      <label for="editDoctorSpecialization">Specialization:</label>
+      <select id="editDoctorSpecialization" [(ngModel)]="editingDoctor.specializationId" name="editDoctorSpecialization" required>
+        <option *ngFor="let spec of specializations" [ngValue]="spec.specializationId">{{ spec.specializationName }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="editDoctorCity">City:</label>
+      <input type="text" id="editDoctorCity" [(ngModel)]="editingDoctor.city" name="editDoctorCity" required>
+    </div>
+    <div>
+      <label for="editDoctorRating">Rating:</label>
+      <!-- MODIFIED LINE -->
+      <input type="number" id="editDoctorRating" [(ngModel)]="editingDoctor.rating" name="editDoctorRating" required max="5" step="0.1">
+    </div>
+    <button type="submit">Update Doctor</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
+
+<p *ngIf="message">{{ message }}</p>

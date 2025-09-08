@@ -1,0 +1,16 @@
+<nav>
+  <div class="hamburger" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul [class.active]="menuOpen">
+    <li *ngIf="!isLoggedIn()"><a routerLink="/login">Login</a></li>
+    <li *ngIf="!isLoggedIn()"><a routerLink="/register">Register</a></li>
+    <li *ngIf="isLoggedIn()"><a routerLink="/doctor-search">Doctor Search</a></li>
+    <li *ngIf="isLoggedIn() && !isAdmin()"><a routerLink="/my-appointments">My Appointments</a></li>
+    <li *ngIf="isLoggedIn() && isAdmin()"><a routerLink="/admin/users">Admin Dashboard</a></li>
+    <li *ngIf="isLoggedIn()"><button (click)="logout()">Logout</button></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

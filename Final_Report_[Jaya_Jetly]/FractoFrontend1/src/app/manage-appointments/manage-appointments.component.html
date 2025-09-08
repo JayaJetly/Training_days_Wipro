@@ -1,0 +1,48 @@
+<h2>My Appointments</h2>
+
+<p *ngIf="message" class="message">{{ message }}</p>
+
+<table *ngIf="appointments && appointments.length > 0" class="appointments-table">
+  <thead>
+    <tr>
+      <th>Doctor</th>
+      <th>Specialization</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let app of appointments">
+      <ng-container *ngIf="app.doctor; else noDoctorInfo">
+        <td data-label="Doctor">{{ app.doctor.name }}</td>
+        <td data-label="Specialization">{{ getSpecializationName(app.doctor) }}</td>
+      </ng-container>
+      <ng-template #noDoctorInfo>
+        <td data-label="Doctor & Specialization" colspan="2">Appointment data is incomplete</td>
+      </ng-template>
+
+      <td data-label="Date">{{ app.appointmentDate | date:'yyyy-MM-dd' }}</td>
+      <td data-label="Time">{{ app.timeSlot }}</td>
+      <td data-label="Status">{{ app.status }}</td>
+      <td data-label="Actions">
+        <button *ngIf="app.status === 'Approved'" (click)="selectAppointmentForRating(app)">Rate Doctor</button>
+        <button *ngIf="app.status !== 'Cancelled' && app.status !== 'Completed'" (click)="cancelAppointment(app.appointmentId!)">Cancel</button>
+        <button *ngIf="app.status === 'Booked'" (click)="approveAppointment(app.appointmentId!)">Approve</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="!appointments || appointments.length === 0">
+  You do not have any appointments scheduled.
+</p>
+
+<div *ngIf="selectedAppointment" class="rating-modal">
+  <h3>Rate Dr. {{ selectedAppointment.doctor.name }}</h3>
+  <label for="rating">Rating (1-5):</label>
+  <input type="number" id="rating" [(ngModel)]="ratingValue" min="1" max="5">
+  <button (click)="submitRating()">Submit</button>
+  <button (click)="cancelRating()">Cancel</button>
+</div>
